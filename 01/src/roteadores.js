@@ -4,7 +4,8 @@ const {listarProdutos,listarProdutosPorId,CalcularFreteDoproduto, detalharProdut
 const rotas = express();
 
 rotas.get('/produtos',listarProdutos);
-rotas.get('/produtos/:idProduto',detalharProduto)
+rotas.get('/produtos/:idProduto',detalharProduto);
+rotas.get('/produtos/:idProduto/frete/:cep',CalcularFreteDoproduto)
 
 
 
