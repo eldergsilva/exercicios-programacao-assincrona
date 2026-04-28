@@ -1,11 +1,16 @@
+
 const axios = require('axios');
+
 
 const listarPokemons = async (req, res) => {
     try {
-        const {pagina} = req.query         
-        const { data} = await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=0&limit=20`);  
-         
-        return  res.send(data)
+        const { pagina = 1 } = req.query
+        const limit = 20
+        const offset = (pagina - 1) * limit
+
+        const { data } = await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`);
+
+        return res.send(data.results)
 
 
     } catch (error) {
